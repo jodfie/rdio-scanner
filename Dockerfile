@@ -1,20 +1,13 @@
-FROM alpine:3.21.2
+FROM alpine:3.21
 
 WORKDIR /app
 
 ENV DOCKER=1
 
-# renovate: datasource=repology depName=alpine_3_20/ca-certificates
-ARG CA_CERTIFICATES_VERSION=20240226-r0
-# renovate: datasource=repology depName=alpine_3_20/ffmpeg
-ARG FFMPEG_VERSION=6.1.1-r7
-# renovate: datasource=repology depName=alpine_3_20/tzdata
-ARG TZDATA_VERSION=2024a-r1
-
 RUN apk add --no-cache \
-    ca-certificates="${CA_CERTIFICATES_VERSION}" \
-    ffmpeg="${FFMPEG_VERSION}" \
-    tzdata="${TZDATA_VERSION}"
+    ca-certificates \
+    ffmpeg \
+    tzdata
 
 COPY rdio-scanner ./
 
